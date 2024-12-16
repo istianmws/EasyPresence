@@ -1,0 +1,88 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout>
+    <!-- <div class="flex flex-col items-center justify-center h-screen">
+        <h1 class="text-4xl font-bold text-center text-gray-800">
+            Validate your identity
+        </h1>
+        <p class="mt-4 text-lg text-center text-gray-600">
+            Please scan the QR code to validate your identity
+        </p>
+        <div class="mt-8">
+            <img
+                src="/qr-code.png"
+                alt="QR Code"
+                class="w-64 h-64 object-cover"
+            />
+        </div>
+    </div> -->
+<script>
+    // Function to update the clock every second
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+        const seconds = String(now.getSeconds()).padStart(2, "0");
+        const timeString = `${hours}:${minutes}:${seconds}`;
+        document.getElementById("clock").textContent = timeString;
+    }
+
+    // Function to set a custom name (you can modify the name here)
+    function setCustomName() {
+        const customName = "Muhammad Ikhsan, S.Pd"; // You can change this name dynamically
+        document.getElementById("custom-name").textContent = customName;
+    }
+
+    // Function to initialize the page
+    function initPage() {
+        setCustomName(); // Set the custom name when the page loads
+        updateClock(); // Update the clock once when the page loads
+        setInterval(updateClock, 1000); // Update the clock every second
+        presensi(); // Call the presensi function (from previous script)
+    }
+
+    // Presensi function to embed form in iframe (from previous example)
+    function presensi() {
+        const firstUrl =
+            "https://docs.google.com/forms/d/e/1FAIpQLScmVK1vAppz_ftHkYHJ7sp5Q8ngn81lcHoMtGDOVNDoEiOiuw/formResponse?usp=pp_url&entry.2137875663=Muhammad+Ikhsan,+S.Pd&entry.1507499726=H";
+        const iframe = document.createElement("iframe");
+        iframe.src = firstUrl;
+        iframe.style.width = "100%";
+        iframe.style.height = "400px"; // Adjust height as needed
+        iframe.style.border = "1";
+        iframe.style.borderRadius = "15px"; // Rounded corners
+        document.getElementById("form-container").appendChild(iframe);
+    }
+
+    // Call initPage when the window loads
+    window.onload = initPage;
+</script>
+<!-- Header Section -->
+<div class="bg-white py-4 sm:py-2">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+            <!-- Presensi title with custom name and clock -->
+            <div class="col text-base font-semibold leading-7 text-indigo-600">
+                <h2 class="text-base font-bold leading-7 text-indigo-600">
+                    Presensi
+                </h2>
+                <span id="custom-name"></span>
+                <br />
+                <span id="clock"></span>
+            </div>
+
+            <p
+                class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+                Berangkat Ceria Pulang Bahagia
+            </p>
+            <p class="mt-6 text-lg leading-8 text-gray-600">
+                Jaya MTS Muhammadiyah Donorejo
+            </p>
+        </div>
+
+        <!-- Container where the form will be embedded -->
+        <div id="form-container" class="mt-8"></div>
+    </div>
+</div>
