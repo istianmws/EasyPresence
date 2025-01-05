@@ -15,7 +15,7 @@ domReady(function () {
         if (isProcessing) return; // Cegah pemanggilan ulang
         isProcessing = true; // Set flag menjadi true
 
-        if (isValidURL(decodedText)) {
+        if (isValidURL(extractURL(decodedText))) {
             // Buka URL di tab baru
             const newTab = window.open(decodedText, "_blank");
 
@@ -60,8 +60,27 @@ function showSnackbar(message) {
     }, 5000);
 }
 
+function extractURL(input) {
+    const prefix = "MTSMUH-";
+
+    // Periksa apakah string diawali dengan prefix
+    if (input.startsWith(prefix)) {
+        // Ambil URL dengan menghapus prefix
+        const url = input.slice(prefix.length);
+        // Periksa apakah URL valid
+        if (isValidURL(url)) {
+            return url;
+        } else {
+            return "Invalid URL";
+        }
+    } else {
+        return "Invalid String";
+    }
+}
+
 function isValidURL(string) {
     try {
+
         new URL(string);
         return true;
     } catch (_) {

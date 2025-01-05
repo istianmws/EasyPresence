@@ -1,23 +1,28 @@
+---
+
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/ep_ico2.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Easy Presence</title>
-	</head>
-	<body
-		class="flex items-center justify-center h-screen bg-gradient-to-r from-cyan-500 to-blue-500 bg-opacity-70"
-	>
-		<slot />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/ep_ico2.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Easy Presence</title>
+  </head>
+  <body
+    class="flex items-center justify-center h-screen bg-gradient-to-r from-cyan-500 to-blue-500 bg-opacity-70"
+  >
+    <slot />
 
-		<script is:inline src="https://unpkg.com/html5-qrcode"></script>
-		<script src="/src/scripts/local.js"></script>
-		<script
-			is:inline
-			src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
-		></script>
-		<script is:inline src="https://cdn.tailwindcss.com"></script>
-	</body>
+
+    <script is:inline src="https://unpkg.com/html5-qrcode"></script>
+    <script src="/src/scripts/local.js"></script>
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"
+    ></script>
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+  </body>
 </html>
