@@ -34,7 +34,7 @@ domReady(function () {
             }, 6000);
 
             // Tampilkan Snackbar
-            setTimeout(() => showSnackbar("Scanned successfully!"), 10000); // Delay 1 detik sebelum snackbar muncul
+            setTimeout(() => showSnackbar("Scanned successfully!"), 7000); // Delay 1 detik sebelum snackbar muncul
 
         } else {
             showSnackbar("Invalid QR Code!");
