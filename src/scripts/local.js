@@ -15,9 +15,14 @@ domReady(function () {
         if (isProcessing) return; // Cegah pemanggilan ulang
         isProcessing = true; // Set flag menjadi true
 
-        if (isValidURL(extractURL(decodedText))) {
+        const extractedURL = extractURL(decodedText);
+
+        // Pastikan URL ada dan valid
+        if (extractedURL && isValidURL(extractedURL)) {
+            const newurl = extractedURL;
+
             // Buka URL di tab baru
-            const newTab = window.open(decodedText, "_blank");
+            const newTab = window.open(newurl, "_blank");
 
             // Tutup tab baru setelah 5 detik
             setTimeout(() => {
@@ -33,6 +38,7 @@ domReady(function () {
 
         } else {
             showSnackbar("Invalid QR Code!");
+            isProcessing = false; // Reset flag jika gagal
         }
 
         console.log("Scanned result:", decodedText);
@@ -67,16 +73,12 @@ function extractURL(input) {
     if (input.startsWith(prefix)) {
         // Ambil URL dengan menghapus prefix
         const url = input.slice(prefix.length);
-        // Periksa apakah URL valid
-        if (isValidURL(url)) {
-            return url;
-        } else {
-            return "Invalid URL";
-        }
+        return url; // Langsung kembalikan hasil URL yang sudah dipotong
     } else {
-        return "Invalid String";
+        return null; // Kembalikan null jika prefix tidak valid
     }
 }
+
 
 function isValidURL(string) {
     try {
