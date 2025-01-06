@@ -34,7 +34,7 @@ domReady(function () {
             }, 6000);
 
             // Tampilkan Snackbar
-            setTimeout(() => showSnackbar("Scanned successfully!"), 7000); // Delay 1 detik sebelum snackbar muncul
+            setTimeout(() => showSnackbar("Scanned successfully!"), 6500); // Delay 1 detik sebelum snackbar muncul
 
         } else {
             showSnackbar("Invalid QR Code!");
@@ -63,7 +63,7 @@ function showSnackbar(message) {
     setTimeout(() => {
         snackbar.classList.add("hidden");
         snackbar.classList.remove("show");
-    }, 5000);
+    }, 3000);
 }
 
 function extractURL(input) {
